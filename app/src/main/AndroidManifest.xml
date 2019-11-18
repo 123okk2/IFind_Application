@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ifind">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".lossChildFunction.showPictureDI"></activity>
+        <activity android:name=".lossChildFunction.SelectChild" />
+        <activity android:name=".compareFunction.comparePicture" />
+        <activity android:name=".lossChildFunction.ShortLossChildEdit" />
+        <activity android:name=".lossChildFunction.ShortLossChildPost" />
+        <activity android:name=".lossChildFunction.LongLossChildEdit" />
+        <activity android:name=".lossChildFunction.LongLossChildPost" />
+        <activity android:name=".kidFunction.KidInfoEdit" />
+        <activity android:name=".userInfoFunction.InsertPwd" />
+        <activity android:name=".userInfoFunction.MyInfoEdit" />
+        <activity android:name=".userInfoFunction.MyInfoUnregister" />
+        <activity android:name=".userInfoFunction.MyCommentsList" />
+        <activity android:name=".userInfoFunction.MyPostList" />
+        <activity android:name=".kidFunction.MyKidList" />
+        <activity android:name=".settingFunction.SettingAlarm" />
+        <activity android:name=".compareFunction.ComparePictureList" />
+        <activity android:name=".replyFunction.RewriteReply" />
+        <activity android:name=".kidFunction.KidInfoAdd" />
+        <activity android:name=".userInfoFunction.RegisterClass" />
+        <activity android:name=".userInfoFunction.login" />
+        <activity android:name=".lossChildFunction.ShortLossChildDI" />
+        <activity android:name=".lossChildFunction.LongLossChildDI" />
+        <activity android:name=".settingFunction.SettingMain" />
+        <activity android:name=".mapFunction.Map" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.roopre.cameratutorial.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="74121a13c2a1f12e805aeba6f14e7bae"/>
+    </application>
+
+</manifest>

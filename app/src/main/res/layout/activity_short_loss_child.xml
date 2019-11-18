@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/smallTitleSelected"
+    tools:context=".lossChildFunction.ShortLossChild">
+
+    <ScrollView
+        android:id="@+id/cityArray"
+        android:background="@color/smallTitle"
+        android:layout_width="88dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/seoulBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/whiteboxselected"
+                android:text="서울"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gyungKi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="경기"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/incheon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="인천"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gangWon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="강원"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/choongBuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="충북"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/daeGeon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="대전"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/SaeJong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="세종"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/choongNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="충남"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/jeonBuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="전북"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/jeonNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="전남"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gwangJu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="광주"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gyungBuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="경북"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/daeGu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="대구"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gyungNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="경남"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/woolSan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="울산"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/busan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="부산"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/jeju"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/graybox"
+                android:text="제주"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/perCityFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cityArray"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

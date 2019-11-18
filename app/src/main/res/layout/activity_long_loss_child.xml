@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/smallTitleSelected"
+    tools:context=".lossChildFunction.LongLossChild">
+
+    <LinearLayout
+        android:id="@+id/linearLayouts"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/findHim"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@drawable/whiteboxselected"
+            android:text="찾고\n있어요"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/findMe"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@drawable/graybox"
+            android:text="찾아\n주세요"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/perTypesFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayouts"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

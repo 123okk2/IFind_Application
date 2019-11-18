@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:textColor="@color/bigTitle"
+        tools:layout_editor_absoluteX="299dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="12"
+            android:orientation="vertical"
+            android:textColor="@color/bigTitle">
+
+            <ImageView
+                android:id="@+id/imgReply"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@mipmap/ic_person"
+                android:scaleType="fitXY"
+                tools:srcCompat="@tools:sample/avatars[0]" />
+
+            <TextView
+                android:id="@+id/replyName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/bigTitleSelected"
+                android:gravity="center"
+                android:textColor="@color/bigTitle"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:background="@color/smallTitle">
+
+            <TextView
+                android:id="@+id/replyBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center|left"
+                android:textColor="@color/bigTitle"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/dateBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bigTitleSelected"
+                android:layout_weight="2"
+                android:gravity="center|left" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
