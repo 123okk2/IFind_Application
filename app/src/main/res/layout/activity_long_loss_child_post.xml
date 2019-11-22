@@ -55,6 +55,7 @@
                 android:scaleType="fitXY"
                 tools:src="@tools:sample/avatars[7]"
                 tools:srcCompat="@tools:sample/avatars" />
+
         </LinearLayout>
 
         <TextView

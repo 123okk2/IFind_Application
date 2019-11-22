@@ -2,11 +2,14 @@ package com.example.ifind;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.ifind.compareFunction.ComparePictureList;
 import com.example.ifind.lossChildFunction.LongLossChild;
+import com.example.ifind.lossChildFunction.LongLossChildPost;
+import com.example.ifind.lossChildFunction.SelectChild;
 import com.example.ifind.lossChildFunction.ShortLossChild;
 import com.example.ifind.settingFunction.SettingMain;
 import com.example.ifind.userInfoFunction.RegisterClass;
@@ -44,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fm;
     FragmentTransaction ft;
 
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,34 +75,6 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.perTermFrame, slc);
         ft.commit();
     }
-    //        try {
-//            PackageInfo info = getPackageManager().getPackageInfo("com.example.ifind", PackageManager.GET_SIGNATURES);
-//            for (Signature signature : info.signatures) {
-//                MessageDigest md = MessageDigest.getInstance("SHA");
-//                md.update(signature.toByteArray());
-//                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-//            }
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-
-
-    /*
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if(state) {
-
-        }
-        else {
-
-        }
-    }
-    */
-
 
     public void selectTerm(View v) {
         //매번 초기화 안해주면 터짐
@@ -175,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
     //액션바
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -208,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
+*/
     public void onRegisterClicked(View v) {
         Intent i = new Intent(getApplicationContext(), RegisterClass.class);
         startActivity(i);
@@ -231,6 +208,58 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),
                 "뒤로 버튼을 한번 더 터치하시면 종료됩니다.",
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickFloat(View v) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+        alertDialogBuilder.setTitle("작업 선택");
+        alertDialogBuilder
+                .setMessage("")
+                .setCancelable(true)
+                .setPositiveButton("단기 미아 등록",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog, int id) {
+                                Intent i = new Intent(getApplicationContext(), SelectChild.class);
+                                //i = new Intent(getApplicationContext(), ShortLossChildPost.class);
+                                startActivity(i);
+                            }
+                        })
+                .setNegativeButton("장기 미아 등록",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog, int id) {
+
+                                AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+                                alertDialogBuilder2.setTitle("작업 선택");
+                                alertDialogBuilder2
+                                        .setMessage("")
+                                        .setCancelable(true)
+                                        .setPositiveButton("찾고있어요",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(
+                                                            DialogInterface dialog, int id) {
+                                                        Intent i = new Intent(getApplicationContext(), LongLossChildPost.class);
+                                                        //0 : 찾고있어요 1 : 찾아주세요
+                                                        i.putExtra("type", 0);
+                                                        startActivity(i);
+                                                    }
+                                                })
+                                        .setNegativeButton("찾아주세요",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(
+                                                            DialogInterface dialog, int id) {
+                                                        Intent i = new Intent(getApplicationContext(), LongLossChildPost.class);
+                                                        i.putExtra("type", 1);
+                                                        startActivity(i);
+                                                    }
+                                                });
+                                AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                                alertDialog2.show();
+                            }
+                        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

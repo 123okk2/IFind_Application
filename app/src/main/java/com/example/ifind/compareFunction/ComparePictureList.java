@@ -43,9 +43,6 @@ import java.util.Date;
 
 public class ComparePictureList extends AppCompatActivity {
 
-    /*
-    Bitmap bm;
-    ImageView img;'*/
     ImageView img2;
     Bitmap img;
 
@@ -307,6 +304,7 @@ public class ComparePictureList extends AppCompatActivity {
 
         @Override
         protected JSONObject doInBackground(String... strings) {
+            if (img==null) finish();
 
             SharedPreferences pref = getSharedPreferences("userInfo", MODE_PRIVATE);
             System.out.println(pref.getString("userID",""));

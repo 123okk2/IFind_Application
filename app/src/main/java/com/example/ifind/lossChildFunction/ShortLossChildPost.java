@@ -80,8 +80,6 @@ public class ShortLossChildPost extends AppCompatActivity {
             {"창원시", "진주시","통영시","사천시","김해시","밀양시","거제시","양산시 의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"},
             {"제주시","서귀포시"},
     };
-
-    Button map;
     ImageButton imb1;
     EditText nameBox;
     EditText ageBox;
@@ -129,16 +127,6 @@ public class ShortLossChildPost extends AppCompatActivity {
 
             }
         });
-        map = (Button) findViewById(R.id.mapBtn);
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i;
-                i = new Intent(getApplicationContext(), Map.class);
-                startActivity(i);
-            }
-        });
-
         dateB = (Button) findViewById(R.id.dateB);
         timeB = (Button) findViewById(R.id.timeB);
 
@@ -392,11 +380,11 @@ public class ShortLossChildPost extends AppCompatActivity {
         }
         return false;
     }
-
     boolean chk=false;
     private class JSONParse extends AsyncTask<String, String, JSONObject> {
         ServerConnectionManager scm = new ServerConnectionManager();
         private ProgressDialog pDialog;
+        int type;
         @Override
         protected void onPreExecute() {
             pDialog = new ProgressDialog(ShortLossChildPost.this);
@@ -413,13 +401,15 @@ public class ShortLossChildPost extends AppCompatActivity {
             switch (functionType) {
                 case 0:
                     SharedPreferences pref2 = getSharedPreferences("postMiaByKid", MODE_PRIVATE);
-                    int type = pref2.getInt("type",2);
-                    String name = pref2.getString("kidName", "");
-                    m = scm.MyKids(id, name);
-                    OldImg = m.getphoto();
+                    type = pref2.getInt("type",2);
+                    if(type == 1) {
+                        String name = pref2.getString("kidName", "");
+                        m = scm.MyKids(id, name);
+                        OldImg = m.getphoto();
+                    }
+                    errCode = 101010;
                     break;
                 case 1:
-
                     //id, type1, type2, photo1, photo2, missingDate, place, feature
                     String names = nameBox.getText().toString();
                     System.out.println(ageBox.getText());
@@ -450,7 +440,7 @@ public class ShortLossChildPost extends AppCompatActivity {
         @Override
         protected void onPostExecute(JSONObject J) {
             pDialog.dismiss();
-            if(functionType == 0) {
+            if(functionType == 0 && type == 1) {
                 imb1.setImageBitmap(m.getphoto());
                 nameBox.setText(m.getName());
                 ageBox.setText(Integer.toString(m.getAge()));

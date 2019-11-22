@@ -2,9 +2,11 @@ package com.example.ifind.kidFunction;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,11 +31,11 @@ public class MyKidList extends AppCompatActivity {
     ListView kidList;
     ArrayList<String> kids;
     String selected = "";
-    Button editKid, delKid;
     String id;
     Context context = this;
 
     int functionType = 0;
+    AlertDialog.Builder alertDialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,9 @@ public class MyKidList extends AppCompatActivity {
         id = pref.getString("userID", "");
 
         kidList = (ListView) findViewById(R.id.kidlv);
-        editKid = (Button) findViewById(R.id.editKid);
-        delKid = (Button) findViewById(R.id.delKid);
+
+
+        alertDialogBuilder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
     }
 
     @Override
@@ -58,28 +61,6 @@ public class MyKidList extends AppCompatActivity {
         new JSONParse().execute();
     }
 
-    public void onClick(View v) {
-        editKid.setEnabled(false);
-        delKid.setEnabled(false);
-        Intent i;
-
-        switch(v.getId()) {
-            case R.id.addNewKid :
-                i=new Intent(getApplication(), KidInfoAdd.class);
-                startActivity(i);
-                break;
-            case R.id.delKid :
-                functionType = 1;
-                new JSONParse().execute();
-                break;
-            case R.id.editKid :
-                i=new Intent(getApplication(), KidInfoEdit.class);
-                i.putExtra("kidName", selected);
-                System.out.println(selected);
-                startActivity(i);
-                break;
-        }
-    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -122,6 +103,7 @@ public class MyKidList extends AppCompatActivity {
             pDialog.setMessage("잠시만 기다려주세요.");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
+
             pDialog.show();
             super.onPreExecute();
         }
@@ -131,7 +113,10 @@ public class MyKidList extends AppCompatActivity {
         protected JSONObject doInBackground(String... strings) {
             switch (functionType) {
                 case 0:
-                    kids = scm.myKids(id);
+                    kids = new ArrayList<String>();
+                    kids.add("새 아이 추가");
+                    ArrayList<String> kid = scm.myKids(id);
+                    for(int i=0; i<kid.size(); i++) kids.add(kid.get(i));
 
                     if(kids.size()==0) {
                         errCode = 0;
@@ -152,10 +137,7 @@ public class MyKidList extends AppCompatActivity {
                     }
                     kids = scm.myKids(id);
 
-                    if(kids.size()==0) {
-                        errCode = 3;
-                    }
-                    else {
+                    if(kids.size() !=0)  {
                         if (kids.get(0).equals("errorOccure")) {
                             errCode = 4;
                         } else {
@@ -218,8 +200,6 @@ public class MyKidList extends AppCompatActivity {
                             //나중에 고쳐야됨
                             view.setBackgroundResource(R.color.smallTitle);
                             selected = kids.get(position);
-                            editKid.setEnabled(true);
-                            delKid.setEnabled(true);
                         }
                     });
                     break;
@@ -232,13 +212,48 @@ public class MyKidList extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //나중에 고쳐야됨
-                            view.setBackgroundResource(R.color.smallTitle);
-                            selected = kids.get(position);
-                            editKid.setEnabled(true);
-                            delKid.setEnabled(true);
+                            if(position == 0) {
+                                Intent i=new Intent(getApplication(), KidInfoAdd.class);
+                                startActivity(i);
+                            }
+                        }
+                    });
+                    kidList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            if(position > 0) {
+                                selected = kids.get(position);
+                                alertDialogBuilder.setTitle("작업 선택");
+                                alertDialogBuilder
+                                        .setMessage("")
+                                        .setCancelable(true)
+                                        .setPositiveButton("수정",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(
+                                                            DialogInterface dialog, int id) {
+                                                        // 프로그램을 종료한다
+                                                        Intent i = new Intent(getApplication(), KidInfoEdit.class);
+                                                        i.putExtra("kidName", selected);
+                                                        System.out.println(selected);
+                                                        startActivity(i);
+                                                    }
+                                                })
+                                        .setNegativeButton("삭제",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(
+                                                            DialogInterface dialog, int id) {
+                                                        functionType = 1;
+                                                        new JSONParse().execute();
+                                                    }
+                                                });
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                alertDialog.show();
+                            }
+                            return false;
                         }
                     });
                     break;
+
 
             }
             super.onPostExecute(J);

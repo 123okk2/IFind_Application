@@ -293,6 +293,7 @@ public class comparePicture extends AppCompatActivity {
                     kidBitmap = llc.getPic();
                     break;
                 case 2:
+                    if (imageBitmap == null) finish();
                     res = scm.comparePic(imageBitmap, kidBitmap, pid);
                     break;
             }

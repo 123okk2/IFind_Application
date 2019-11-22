@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711721997699",
+    "firebase_url": "https://i-find-521d7.firebaseio.com",
+    "project_id": "i-find-521d7",
+    "storage_bucket": "i-find-521d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711721997699:android:2ec2567aab664800cb52b6",
+        "android_client_info": {
+          "package_name": "com.example.ifind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711721997699-4220cjj7qof21to2doa5nvsgv1dlvbk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLVIWw0-jAsJJTrNHzWBpRx26_vcGTF9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711721997699-4220cjj7qof21to2doa5nvsgv1dlvbk9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

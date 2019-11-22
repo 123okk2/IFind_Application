@@ -32,10 +32,8 @@ public class SelectChild extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("저기1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_child);
-        System.out.println("저기2");
         SharedPreferences pref = getSharedPreferences("userInfo", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
 
@@ -45,7 +43,6 @@ public class SelectChild extends AppCompatActivity {
 
         new JSONParse().execute();
 
-        System.out.println("저기4");
     }
 
     public void onClick(View v) {

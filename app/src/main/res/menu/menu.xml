@@ -13,6 +13,7 @@
         android:icon="@drawable/ic_search"
         android:orderInCategory="120"
         android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/action_setting"
