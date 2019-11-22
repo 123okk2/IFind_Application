@@ -1,5 +1,6 @@
 package com.example.ifind.pushMessage;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -19,6 +20,7 @@ import com.google.firebase.messaging.RemoteMessage;
 public class FBPush extends FirebaseMessagingService {
     private static final String TAG = "MyFirebaseMsgService";
 
+    private String data ="";
     /**
      * Called when message is received.
      *
@@ -35,7 +37,8 @@ public class FBPush extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-
+            data = remoteMessage.getData().get("pos");
+            sendNotification(remoteMessage);
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
             } else {
@@ -48,7 +51,7 @@ public class FBPush extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            sendNotification(remoteMessage.getNotification().getBody());
+            //sendNotification(remoteMessage);
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -66,10 +69,10 @@ public class FBPush extends FirebaseMessagingService {
     /**
      * Create and show a simple notification containing the received FCM message.
      *
-     * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody) {
-
+    private void sendNotification(RemoteMessage remoteMessage) {
+        data = remoteMessage.getData().get("pos");
+        Log.d(TAG, "Message Notification Body: " + data);
         Intent intent = new Intent(this, MainActivity.class);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -81,12 +84,12 @@ public class FBPush extends FirebaseMessagingService {
 
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("FCM Message")
-                        .setContentText(messageBody)
+                        .setSmallIcon(R.drawable.ic_icon)
+                        .setContentTitle("미아가 발생 했어요!")
+                        .setContentText(data)
                         .setAutoCancel(true)
-                        .setSound(defaultSoundUri)
-                        .setContentIntent(pendingIntent);
+                        .setContentIntent(pendingIntent)
+                        .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
