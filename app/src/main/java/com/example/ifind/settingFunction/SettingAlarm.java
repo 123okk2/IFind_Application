@@ -1,8 +1,8 @@
 package com.example.ifind.settingFunction;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -11,6 +11,7 @@ import android.widget.Switch;
 
 import com.example.ifind.R;
 import com.example.ifind.compareFunction.ComparePictureList;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SettingAlarm extends AppCompatActivity {
 
@@ -110,10 +111,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(seoul.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("seoul");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("seoul");
                 }
             }
         });
@@ -121,10 +122,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(gyungki.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("gyungki");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("gyungki");
                 }
             }
         });
@@ -132,10 +133,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(incheon.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("incheon");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("incheon");
                 }
             }
         });
@@ -143,10 +144,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(gangwon.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("gangwon");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("gangwon");
                 }
             }
         });
@@ -154,10 +155,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(choongbook.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("choongbook");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("choongbook");
                 }
             }
         });
@@ -165,10 +166,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(daegeon.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("daegeon");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("daegeon");
                 }
             }
         });
@@ -176,10 +177,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(saejong.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("saejong");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("saejong");
                 }
             }
         });
@@ -187,10 +188,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(choongnam.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("choongnam");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("choongnam");
                 }
             }
         });
@@ -198,10 +199,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(jeonbook.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("jeonbook");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("jeonbook");
                 }
             }
         });
@@ -209,10 +210,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(jeonnam.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("jeonnam");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("jeonnam");
                 }
             }
         });
@@ -220,10 +221,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(gwangju.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("gwangju");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("gwangju");
                 }
             }
         });
@@ -231,10 +232,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(gyungbook.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("gyungbook");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("gyungbook");
                 }
             }
         });
@@ -242,10 +243,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(daegu.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("daegu");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("daegu");
                 }
             }
         });
@@ -253,10 +254,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(gyungnam.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("gyungnam");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("gyungnam");
                 }
             }
         });
@@ -264,10 +265,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(woolsan.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("woolsan");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("woolsan");
                 }
             }
         });
@@ -275,10 +276,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(busan.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("busan");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("busan");
                 }
             }
         });
@@ -286,10 +287,10 @@ public class SettingAlarm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(jeju.isChecked() == true) {
-
+                    FirebaseMessaging.getInstance().subscribeToTopic("jeju");
                 }
                 else {
-
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("jeju");
                 }
             }
         });
