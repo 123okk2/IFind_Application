@@ -18,18 +18,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="12"
-            android:orientation="vertical"
-            android:textColor="@color/bigTitle">
+            android:orientation="vertical">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgReply"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/ic_person"
-                android:scaleType="fitXY"
-                tools:srcCompat="@tools:sample/avatars[0]" />
-
+                app:srcCompat="@mipmap/ic_person"
+                tools:srcCompat="@mipmap/ic_person"
+                android:background="@color/bigTitleSelected"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000" />
             <TextView
                 android:id="@+id/replyName"
                 android:layout_width="match_parent"
