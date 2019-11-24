@@ -8,17 +8,15 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.JsonReader;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,10 +26,10 @@ import android.widget.Toast;
 import com.example.ifind.R;
 import com.example.ifind.compareFunction.comparePicture;
 import com.example.ifind.replyFunction.RewriteReply;
-import com.example.ifind.serverFunction.ServerConnectionManager;
-import com.example.ifind.settingFunction.SettingMain;
 import com.example.ifind.replyFunction.replyAdapter;
 import com.example.ifind.replyFunction.replyInfo;
+import com.example.ifind.serverFunction.ServerConnectionManager;
+import com.example.ifind.settingFunction.SettingMain;
 
 import org.json.JSONObject;
 
@@ -374,7 +372,62 @@ public class LongLossChildDI extends AppCompatActivity {
                     replyBox.setText("");
                     ls=(ListView) findViewById(R.id.replyLists);
                     ls.setAdapter(ra);
-                    setListViewHeightBasedOnChildren(ls);
+                    setListViewHeightBasedOnChildren(ls);ls.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final replyInfo m = ((replyInfo) parent.getItemAtPosition(position));
+                        if (!ids.equals(m.getID())) {
+                            Toast.makeText(getApplicationContext(),
+                                    "권한이 없습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LongLossChildDI.this);
+
+                            // 제목셋팅
+                            alertDialogBuilder.setTitle("작업을 선택하세요.");
+
+                            // AlertDialog 셋팅
+                            alertDialogBuilder
+                                    .setMessage("")
+                                    .setCancelable(true)
+                                    .setPositiveButton("수정",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 수정
+                                                    Intent i = new Intent(getApplicationContext(), RewriteReply.class);
+                                                    //여기에 정보 넘기기
+                                                    //String id, String pid, String cid, String name, String content, String date
+                                                    i.putExtra("content", m.getReply());
+                                                    i.putExtra("id", m.getID());
+                                                    i.putExtra("pid", writerID);
+                                                    i.putExtra("cid", m.getCid());
+                                                    i.putExtra("name", m.getName());
+                                                    startActivity(i);
+                                                }
+                                            })
+                                    .setNegativeButton("삭제",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 삭제
+                                                    deleteReplyID = m.getID();
+                                                    deleteReplyCID = m.getCid();
+                                                    deleteReplyName = m.getName();
+                                                    functionType = 5;
+                                                    new JSONParse().execute();
+                                                }
+                                            });
+
+                            // 다이얼로그 생성
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+
+                            // 다이얼로그 보여주기
+                            alertDialog.show();
+                        }
+                        return false;
+                    }
+                });
                     break;
                 case 8:
                     Toast.makeText(getApplicationContext(),
@@ -387,7 +440,62 @@ public class LongLossChildDI extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     //액티비티 갱신
                     ls.setAdapter(ra);
-                    setListViewHeightBasedOnChildren(ls);
+                    setListViewHeightBasedOnChildren(ls);ls.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final replyInfo m = ((replyInfo) parent.getItemAtPosition(position));
+                        if (!ids.equals(m.getID())) {
+                            Toast.makeText(getApplicationContext(),
+                                    "권한이 없습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LongLossChildDI.this);
+
+                            // 제목셋팅
+                            alertDialogBuilder.setTitle("작업을 선택하세요.");
+
+                            // AlertDialog 셋팅
+                            alertDialogBuilder
+                                    .setMessage("")
+                                    .setCancelable(true)
+                                    .setPositiveButton("수정",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 수정
+                                                    Intent i = new Intent(getApplicationContext(), RewriteReply.class);
+                                                    //여기에 정보 넘기기
+                                                    //String id, String pid, String cid, String name, String content, String date
+                                                    i.putExtra("content", m.getReply());
+                                                    i.putExtra("id", m.getID());
+                                                    i.putExtra("pid", writerID);
+                                                    i.putExtra("cid", m.getCid());
+                                                    i.putExtra("name", m.getName());
+                                                    startActivity(i);
+                                                }
+                                            })
+                                    .setNegativeButton("삭제",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 삭제
+                                                    deleteReplyID = m.getID();
+                                                    deleteReplyCID = m.getCid();
+                                                    deleteReplyName = m.getName();
+                                                    functionType = 5;
+                                                    new JSONParse().execute();
+                                                }
+                                            });
+
+                            // 다이얼로그 생성
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+
+                            // 다이얼로그 보여주기
+                            alertDialog.show();
+                        }
+                        return false;
+                    }
+                });
                     break;
                 case 11:
                     Toast.makeText(getApplicationContext(),

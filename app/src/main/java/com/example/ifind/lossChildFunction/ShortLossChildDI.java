@@ -244,7 +244,7 @@ public class ShortLossChildDI extends AppCompatActivity {
                         ra = new replyAdapter();
                         for (int i = 0; i < ar.size(); i++)
                             ra.addItem(ar.get(i).getID(), ar.get(i).getCid(), ar.get(i).getPic(), ar.get(i).getName(), ar.get(i).getReply(), ar.get(i).getDates(), ar.get(i).getUsrName());
-                        ls.setAdapter(ra);
+                        //ls.setAdapter(ra);
                     } else {
                         errType = 11;
                     }
@@ -348,7 +348,62 @@ public class ShortLossChildDI extends AppCompatActivity {
                     replyBox.setText("");
                     ls = (ListView) findViewById(R.id.replyLists);
                     ls.setAdapter(ra);
-                    setListViewHeightBasedOnChildren(ls);
+                    setListViewHeightBasedOnChildren(ls);ls.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final replyInfo m = ((replyInfo) parent.getItemAtPosition(position));
+                        if (!ids.equals(m.getID())) {
+                            Toast.makeText(getApplicationContext(),
+                                    "권한이 없습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ShortLossChildDI.this);
+
+                            // 제목셋팅
+                            alertDialogBuilder.setTitle("작업을 선택하세요.");
+
+                            // AlertDialog 셋팅
+                            alertDialogBuilder
+                                    .setMessage("")
+                                    .setCancelable(true)
+                                    .setPositiveButton("수정",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 수정
+                                                    Intent i = new Intent(getApplicationContext(), RewriteReply.class);
+                                                    //여기에 정보 넘기기
+                                                    //String id, String pid, String cid, String name, String content, String date
+                                                    i.putExtra("content", m.getReply());
+                                                    i.putExtra("id", m.getID());
+                                                    i.putExtra("pid", writerID);
+                                                    i.putExtra("cid", m.getCid());
+                                                    i.putExtra("name", m.getName());
+                                                    startActivity(i);
+                                                }
+                                            })
+                                    .setNegativeButton("삭제",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 삭제
+                                                    deleteReplyID = m.getID();
+                                                    deleteReplyCID = m.getCid();
+                                                    deleteReplyName = m.getName();
+                                                    functionType = 4;
+                                                    new JSONParse().execute();
+                                                }
+                                            });
+
+                            // 다이얼로그 생성
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+
+                            // 다이얼로그 보여주기
+                            alertDialog.show();
+                        }
+                        return false;
+                    }
+                });
                     break;
                 case 5:
                     Toast.makeText(getApplicationContext(),
@@ -361,7 +416,62 @@ public class ShortLossChildDI extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     //액티비티 갱신
                     ls.setAdapter(ra);
-                    setListViewHeightBasedOnChildren(ls);
+                    setListViewHeightBasedOnChildren(ls);ls.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        final replyInfo m = ((replyInfo) parent.getItemAtPosition(position));
+                        if (!ids.equals(m.getID())) {
+                            Toast.makeText(getApplicationContext(),
+                                    "권한이 없습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ShortLossChildDI.this);
+
+                            // 제목셋팅
+                            alertDialogBuilder.setTitle("작업을 선택하세요.");
+
+                            // AlertDialog 셋팅
+                            alertDialogBuilder
+                                    .setMessage("")
+                                    .setCancelable(true)
+                                    .setPositiveButton("수정",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 수정
+                                                    Intent i = new Intent(getApplicationContext(), RewriteReply.class);
+                                                    //여기에 정보 넘기기
+                                                    //String id, String pid, String cid, String name, String content, String date
+                                                    i.putExtra("content", m.getReply());
+                                                    i.putExtra("id", m.getID());
+                                                    i.putExtra("pid", writerID);
+                                                    i.putExtra("cid", m.getCid());
+                                                    i.putExtra("name", m.getName());
+                                                    startActivity(i);
+                                                }
+                                            })
+                                    .setNegativeButton("삭제",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(
+                                                        DialogInterface dialog, int id) {
+                                                    // 댓글 삭제
+                                                    deleteReplyID = m.getID();
+                                                    deleteReplyCID = m.getCid();
+                                                    deleteReplyName = m.getName();
+                                                    functionType = 4;
+                                                    new JSONParse().execute();
+                                                }
+                                            });
+
+                            // 다이얼로그 생성
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+
+                            // 다이얼로그 보여주기
+                            alertDialog.show();
+                        }
+                        return false;
+                    }
+                });
                     break;
                 case 11:
                     Toast.makeText(getApplicationContext(),
