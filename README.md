@@ -9,6 +9,9 @@ IFind 어플리케이션
 ## 핵심 기능
 ![0](https://user-images.githubusercontent.com/51351974/71304792-61f7e700-240e-11ea-9096-23cb7efb2f7b.jpg)
 
+## 구조도
+![IFIND ㅜㄱ조](https://user-images.githubusercontent.com/51351974/71306426-74c8e680-2423-11ea-87a7-2d6fc7f2da66.jpg)
+
 ## UI
 ![회원1](https://user-images.githubusercontent.com/51351974/71304787-615f5080-240e-11ea-8a2d-adb7cfe89082.jpg) ![2](https://user-images.githubusercontent.com/51351974/71304788-615f5080-240e-11ea-855c-0a519469c394.jpg) ![3](https://user-images.githubusercontent.com/51351974/71304789-615f5080-240e-11ea-8e10-b511cd85b038.jpg)
 ![4](https://user-images.githubusercontent.com/51351974/71304790-61f7e700-240e-11ea-9c0d-a1e01ae22a00.jpg) ![5](https://user-images.githubusercontent.com/51351974/71304791-61f7e700-240e-11ea-9ae7-2746881fbc8f.jpg)
