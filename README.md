@@ -7,9 +7,11 @@ IFind 어플리케이션
 사용자들(부모들)이 직접 참여하여 미아를 신고하고 제보하는 시스템.
 
 # 핵심 기능
-![0](https://user-images.githubusercontent.com/51351974/71304718-8f906080-240d-11ea-880d-bc333bb6a939.jpg)
+![0](https://user-images.githubusercontent.com/51351974/71304792-61f7e700-240e-11ea-9096-23cb7efb2f7b.jpg)
 
 # UI
+![회원1](https://user-images.githubusercontent.com/51351974/71304787-615f5080-240e-11ea-8a2d-adb7cfe89082.jpg) ![2](https://user-images.githubusercontent.com/51351974/71304788-615f5080-240e-11ea-855c-0a519469c394.jpg) ![3](https://user-images.githubusercontent.com/51351974/71304789-615f5080-240e-11ea-8e10-b511cd85b038.jpg)
+![4](https://user-images.githubusercontent.com/51351974/71304790-61f7e700-240e-11ea-9c0d-a1e01ae22a00.jpg) ![5](https://user-images.githubusercontent.com/51351974/71304791-61f7e700-240e-11ea-9ae7-2746881fbc8f.jpg)
 
 # Made By
 * 어플리케이션 : 이민우, 서동환
