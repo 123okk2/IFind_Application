@@ -37,7 +37,7 @@ public class ServerConnectionManager {
     Context context;
 
     //url
-    String baseURL ="http://202.31.202.150";
+    String baseURL ="secretURL";
     String serverURL;
     String errCode = "";
     HttpURLConnection conn;
